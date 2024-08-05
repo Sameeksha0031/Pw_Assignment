@@ -100,7 +100,7 @@ fun PokemonListScreen(navController: NavHostController, pokemonViewModel: Pokemo
                     state = lazyListState
                 ) {
                     items(pokemonList.size){ character ->
-                        pokemonList[character]?.let { CardViewForList(it,navController,pokemonViewModel) }
+                        pokemonList[character]?.let { CardViewForList(it,navController) }
                     }
                 }
             }
@@ -112,16 +112,14 @@ fun PokemonListScreen(navController: NavHostController, pokemonViewModel: Pokemo
 @Composable
 fun CardViewForList(
     character: Result,
-    navController: NavHostController,
-    pokemonViewModel: PokemonViewModel
+    navController: NavHostController
 ) {
     Spacer(modifier = Modifier.padding(4.dp))
     Card(
         modifier = Modifier
             .background(color = Color.White, shape = RoundedCornerShape(18.dp))
             .clickable {
-                pokemonViewModel.getPokemonDetail(character.name)
-                navController.navigate("PokemonDetail")
+                navController.navigate("PokemonDetail/${character.name}")
             },
         colors = CardColors(
             contentColor = CardColor,

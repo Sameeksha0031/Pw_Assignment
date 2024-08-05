@@ -31,6 +31,7 @@ import androidx.compose.material3.Divider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -63,8 +64,11 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.skydoves.landscapist.rememberDrawablePainter
 
 @Composable
-fun PokemonDetail(navController: NavHostController, pokemonViewModel: PokemonViewModel) {
+fun PokemonDetail(pokemonViewModel: PokemonViewModel, characterName : String) {
 
+    LaunchedEffect(key1 = Unit) {
+        pokemonViewModel.getPokemonDetail(characterName)
+    }
     val pokemonDetail by pokemonViewModel.pokemonDetail.collectAsState()
     DisposableEffect(key1 = Unit) {
         onDispose {

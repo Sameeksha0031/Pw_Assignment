@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import com.example.physics_wallah_assignment.apiCalling.PokemonViewModel
 import com.example.physics_wallah_assignment.composables.PokemonDetail
 import com.example.physics_wallah_assignment.composables.PokemonListScreen
+import com.example.physics_wallah_assignment.composables.SplashScreen
 
 @Composable
 fun ComposeNavigation(navController: NavHostController, pokemonViewModel: PokemonViewModel) {
@@ -18,6 +19,10 @@ fun ComposeNavigation(navController: NavHostController, pokemonViewModel: Pokemo
 
         composable("PokemonDetail"){
             PokemonDetail(navController,pokemonViewModel)
+        }
+
+        composable("SplashScreen"){
+            SplashScreen()
         }
     }
 }

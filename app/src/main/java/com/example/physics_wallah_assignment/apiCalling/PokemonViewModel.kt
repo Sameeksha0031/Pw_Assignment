@@ -58,4 +58,10 @@ class PokemonViewModel : ViewModel() {
             }
         }
     }
+
+    fun removePokemonDetail() {
+        viewModelScope.launch {
+            _pokemonDetail.emit(null)
+        }
+    }
 }
